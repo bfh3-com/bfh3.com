@@ -41,6 +41,8 @@
 
 html {
 	background-color: var(--color-black);
+	-webkit-font-smoothing: antialiased;
+	-webkit-text-size-adjust: 100%;
 }
 
 html::before,
@@ -88,7 +90,6 @@ body {
 	font-size: clamp(1rem, 3vw, calc(20rem/16));
 	line-height: 1.5;
 	padding: 2em;
-	-webkit-font-smoothing: antialiased;
 }
 
 main {
