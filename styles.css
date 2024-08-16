@@ -1,3 +1,7 @@
+/*
+ * Global styles
+ */
+
 /* https://fontsource.org/fonts/noto-sans */
 /* noto-sans-latin-wght-normal */
 @font-face {
@@ -12,9 +16,13 @@
 :root {
 	--color-black: #000000;
 	--color-blue: #418FDE;
+	--color-blue-dark: oklch(from var(--color-blue) calc(l * 0.75) c h);
 	--color-green: #64A70B;
+	--color-green-dark: oklch(from var(--color-green) calc(l * 0.75) c h);
 	--color-orange: #FF8F1C;
 	--color-purple: #9F5CC0;
+	--color-purple-dark: oklch(from var(--color-purple) calc(l * 0.75) c h);
+	--color-purple-light: oklch(from var(--color-purple) calc(l * 2) calc(c * 0.25) h);
 	--color-red: #F4364C;
 	--color-white: #FFFFFF;
 }
@@ -27,201 +35,97 @@
 	margin: 0;
 }
 
+/*
+ * Landmark styles
+ */
+
 html {
-	--stripe: 1rem;
+	background-color: var(--color-black);
+}
+
+html::before,
+html::after {
+	--angle: 120deg;
 	--gap: 0.25rem;
-	background-color: var(--color-black);
-	height: 100vh;
-	background-image: repeating-linear-gradient(
-		to right,
-		transparent 0,
-		transparent 0.25rem,
-		var(--color-orange) 0.25rem,
-		var(--color-orange) 1.25rem,
-		transparent 1.25rem,
-		transparent 1.5rem,
-		var(--color-red) 1.5rem,
-		var(--color-red) 2.5rem,
-		transparent 2.5rem,
-		transparent 2.75rem,
-		var(--color-purple) 2.75rem,
-		var(--color-purple) 3.75rem,
-		transparent 3.75rem,
-		transparent 4rem,
-		var(--color-blue) 4rem,
-		var(--color-blue) 5rem,
-		transparent 5rem,
-		transparent 5.25rem,
-		var(--color-green) 5.25rem,
-		var(--color-green) 6.25rem
-	);
-}
-
-
-
-body {
-	font-family: 'Noto Sans Variable', sans-serif;
-	font-size: calc(18rem/16);
-	line-height: 1.5;
-	-webkit-font-smoothing: antialiased;
-	_padding: 1rem 0;
-}
-
-body::before,
-body::after {
-	border: calc(4rem/16) solid var(--color-black);
+	--size: 1rem;
+	--border-width: 0.25rem;
+	--t0: 0rem;
+	--t1: calc(var(--t0) + var(--size));
+	--t2: calc(var(--t1) + var(--gap));
+	--t3: calc(var(--t2) + var(--size));
+	--t4: calc(var(--t3) + var(--gap));
+	--t5: calc(var(--t4) + var(--size));
+	--t6: calc(var(--t5) + var(--gap));
+	--t7: calc(var(--t6) + var(--size));
+	--t8: calc(var(--t7) + var(--gap));
+	--t9: calc(var(--t8) + var(--size));
+	--t10: calc(var(--t9) + var(--gap));
+	border-color: var(--color-black);
+	border-style: solid;
+	border-width: var(--border-width) 0;
 	background-color: var(--color-black);
 	background-image: repeating-linear-gradient(
-		to right,
-		var(--color-orange) 0rem,
-		var(--color-orange) 1rem,
-		transparent 1rem,
-		transparent 1.25rem,
-		var(--color-red) 1.25rem,
-		var(--color-red) 2.25rem,
-		transparent 2.25rem,
-		transparent 2.5rem,
-		var(--color-purple) 2.5rem,
-		var(--color-purple) 3.5rem,
-		transparent 3.5rem,
-		transparent 3.75rem,
-		var(--color-blue) 3.75rem,
-		var(--color-blue) 4.75rem,
-		transparent 4.75rem,
-		transparent 5rem,
-		var(--color-green) 5rem,
-		var(--color-green) 6rem,
-		transparent 6rem,
-		transparent 6.25rem
+		var(--angle),
+		var(--color-orange) var(--t0) var(--t1),
+		transparent var(--t1) var(--t2),
+		var(--color-red) var(--t2) var(--t3),
+		transparent var(--t3) var(--t4),
+		var(--color-purple) var(--t4) var(--t5),
+		transparent var(--t5) var(--t6),
+		var(--color-blue) var(--t6) var(--t7),
+		transparent var(--t7) var(--t8),
+		var(--color-green) var(--t8) var(--t9),
+		transparent var(--t9) var(--t10)
 	);
 	content: '';
 	display: block;
-	height: 1.5rem;
+	height: calc(var(--border-width) * 2 + var(--size));
+}
+
+body {
+	background-color: var(--color-purple-light);
+	font-family: 'Noto Sans Variable', sans-serif;
+	font-size: clamp(1rem, 3vw, calc(20rem/16));
+	line-height: 1.5;
+	padding: 2em;
+	-webkit-font-smoothing: antialiased;
 }
 
 main {
-	background-color: var(--color-white);
-	background-color: oklch(from var(--color-purple) calc(l * 2) calc(c * 0.25) h);
-	_border-bottom: calc(4rem/16) solid var(--color-black);
-	_border-top: calc(4rem/16) solid var(--color-black);
-	_border-radius: 0.5rem;
-	_margin: 0 auto;
-	_max-width: 54rem;
-	_padding: 2rem 0;
-}
-
-main > .main {
 	margin: 0 auto;
-	max-width: 54rem;
-	padding: 2rem;
-}
-
-main h1 {
-	margin-top: 0;
-	margin-bottom: 2rem;
-}
-
-.main {
-	_background-color: var(--color-white);
-	_padding: 2rem;
-	_max-width: 50rem;
-	_margin: 0 auto;
-	_margin-top: 2rem;
-	_border-top: calc(4rem/16) solid var(--color-green);
-	_padding-top: 2rem;
-}
-
-.section {
-	_background-color: var(--color-white);
-	_border: calc(4rem/16) solid var(--color-purple);
-	_border-radius: 1rem;
-	_box-shadow: 0 0 0 calc(4rem/16) var(--color-white);
-	_margin: 0 auto;
-	_max-width: 75ch;
-	_margin-top: 4rem;
-	_padding: 2rem;
-}
-
-.sectionx:first-child {
-	_background-color: var(--color-green);
-	_padding: 0;
-	_border-bottom: calc(4rem/16) solid var(--color-black);
-	--a: 135deg;
-	--s: 2rem;
-	_mask: conic-gradient(from calc(var(--a)/-2) at bottom, #000 var(--a), #0000 0) 50%/var(--s);
-	_box-shadow: 0 -5px 5px 0 red;
-}
-
-.sectionx > * {
-	margin-left: auto;
-	margin-right: auto;
 	max-width: 50rem;
 }
 
-.sectionx :first-child {
-	margin-top: 0;
-}
+/*
+ * Block styles
+ */
 
-.sectionx {
-	_border: 1px solid blue;
-	position: relative;
-	z-index: 1;
-	_border: 2px solid red;
-}
-
-.sectionx::before {
-	background-color: var(--color-white);
-	_border: 1px solid red;
-	content: '';
-	display: block;
-	height: 100%;
-	width: 100%;
-	position: absolute;
-	z-index: -1;
-	top: 0;
-	left: 0;
-	background: inherit;
-	transform: skew(0, -2deg);
-	transform-origin: top left;
-}
-
-.sectionx::after {
-	background-color: var(--color-white);
-	_border: 1px solid red;
-	content: '';
-	display: block;
-	height: 100%;
-	width: 100%;
-	position: absolute;
-	z-index: -1;
-	top: 0;
-	left: 0;
-	background: inherit;
-	transform: skew(0, -2deg);
-	transform-origin: bottom right;
-}
-
-img, svg {
-	display: block;
-	max-width: 100%;
-}
-
-h1, h2, h3, h4, h5, h6, p, ul {
+h2, p, ul {
 	margin-top: 1em;
-	overflow-wrap: break-word;
+}
+
+h1 + p {
+	margin-top: 2em;
 }
 
 h2 {
-	font-size: 2rem;
+	font-size: 2em;
 }
 
 p {
 	text-wrap: pretty;
 }
 
+ul {
+	padding-left: 2em;
+}
+
+/*
+ * Inline styles
+ */
+
 a {
-	color: var(--color-blue);
-	color: oklch(from var(--color-blue) calc(l * 0.75) c h);
+	color: var(--color-blue-dark);
 }
 
 a:focus {
@@ -229,14 +133,14 @@ a:focus {
 }
 
 a:visited {
-	color: var(--color-purple);
-	color: oklch(from var(--color-purple) calc(l * 0.75) c h);
+	color: var(--color-purple-dark);
 }
 
-.u-m-top-0 {
-	margin-top: 0;
+img {
+	display: block;
+	max-width: 100%;
 }
 
 q {
-	color: oklch(from var(--color-green) calc(l * 0.75) c h);
+	color: var(--color-green-dark);
 }
