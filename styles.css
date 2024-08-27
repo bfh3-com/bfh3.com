@@ -150,6 +150,7 @@ q {
  * Custom elements
  */
 
+bfh3-upcoming-events:not(:defined),
 bfh3-upcoming-events ul:empty,
 bfh3-upcoming-events ul:not(:empty) + p {
 	display: none;
