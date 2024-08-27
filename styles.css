@@ -145,3 +145,12 @@ img {
 q {
 	color: var(--color-green-dark);
 }
+
+/*
+ * Custom elements
+ */
+
+bfh3-upcoming-events ul:empty,
+bfh3-upcoming-events ul:not(:empty) + p {
+	display: none;
+}
