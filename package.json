@@ -1,0 +1,12 @@
+{
+  "name": "bfh3-website",
+  "version": "1.0.0",
+  "description": "Blooming Fools H3 website",
+  "scripts": {
+    "start": "npx live-server"
+  },
+  "author": "Chris Basham <chris@bash.am>",
+  "devDependencies": {
+    "live-server": "1.2.2"
+  }
+}
